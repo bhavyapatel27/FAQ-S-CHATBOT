@@ -1,0 +1,173 @@
+<!--
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Web Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F7F7F7;
+        }
+
+        #webchat {
+            height: 400px;
+            /* width: 400px; */
+            margin: 20px 10px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="webchat"></div>
+
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+
+    <script>
+        const directLineToken = 'O-HGnvbywI8.sDBkLGlRExZMN28dtxK8_O-jmKDiNRUYNmseqj-0B1U';
+        const botEndpoint = 'AICTE';
+
+        const webChatContainer = document.getElementById('webchat');
+        window.WebChat.renderWebChat({
+            directLine: window.WebChat.createDirectLine({ token: directLineToken }),
+            userID: 'user',
+            username: 'User',
+            locale: 'en-US',
+            styleOptions: {
+                bubbleBackground: '#F5F5F5',
+                bubbleTextColor: 'black',
+                bubbleBorderRadius: 20,
+                bubbleFromUserBackground: '#0078D7',
+                bubbleFromUserTextColor: 'white',
+                bubbleFromUserBorderRadius: 20,
+                botAvatarImage: 'https://www.example.com/bot-avatar.png',
+                userAvatarImage: 'https://www.example.com/user-avatar.png',
+                hideSendBox: false,
+                sendBoxBackground: '#F5F5F5',
+                sendBoxTextColor: 'black',
+                sendBoxBorderTop: '1px solid #CCCCCC',
+                sendBoxBorderBottom: '1px solid #CCCCCC',
+                sendBoxBorderLeft: 'none',
+                sendBoxBorderRight: 'none',
+                sendBoxPlaceholderColor: '#AAAAAA',
+                suggestedActionBackgroundColor: '#F5F5F5',
+                suggestedActionTextColor: 'black',
+                inputBackground: 'white',
+                inputTextColor: 'black',
+                inputBorderColor: '#CCCCCC',
+                inputBorderRadius: 20,
+                inputBorderWidth: 1,
+                inputFocusBorderColor: '#0078D7',
+                uploadButtonBackground: '#0078D7',
+                uploadButtonIconColor: 'white',
+                uploadButtonLabelColor: 'white',
+            }
+        }, webChatContainer);
+    </script>
+</body>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Web Chat</title>
+    <h1>AICTE PORTAL</h1>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        #chatButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #12d700;
+            border-radius: 50%;
+            color: rgb(255, 255, 255);
+            font-size: 24px;
+            text-align: center;
+            line-height: 60px;
+            cursor: pointer;
+            box-shadow: 0px 0px 5px 0px rgba(29, 159, 195, 0.2);
+        }
+
+        #chatWindow {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 600px;
+            height: 800px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+		#closeButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: #CCC;
+            border-radius: 50%;
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+		#closeButton:hover {
+            background-color: #fb1414;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatButton">&#63;</div>
+
+    <div id="chatWindow">
+		<div id="webchat"></div>
+		<div id="closeButton">&times;</div>
+    </div>
+
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+
+    <script>
+        const directLineToken = 'O-HGnvbywI8.sDBkLGlRExZMN28dtxK8_O-jmKDiNRUYNmseqj-0B1U';
+        const botEndpoint = 'AICTE';
+
+        const chatButton = document.getElementById('chatButton');
+        const closeButton = document.getElementById('closeButton');
+		const chatWindow = document.getElementById('chatWindow');
+        const webChatContainer = document.getElementById('webchat');
+
+        chatButton.addEventListener('click', () => {
+            chatWindow.style.display = 'block';
+            if (!webChatContainer.childNodes.length) {
+                window.WebChat.renderWebChat(
+                    {
+                        directLine: window.WebChat.createDirectLine({ token: directLineToken }),
+                        userID: 'user',
+                        username: 'User',
+                        locale: 'en-US'
+                    },
+                    webChatContainer
+                );
+            }
+        });
+
+		closeButton.addEventListener('click', () => {
+            chatWindow.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
